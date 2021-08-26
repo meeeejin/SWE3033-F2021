@@ -20,7 +20,7 @@ From these three projects, you can learn how each database system works and unde
 | Week # | Contents     | TA |
 | :----: | :----------- | :-: |
 | 1      | Introduction |  |
-| 2      | Introduction to MySQL and TPC-C benchmark | Mijin An |
+| 2      | [Introduction to MySQL and TPC-C benchmark](week2) | Mijin An |
 | 3      | Run TPC-C and analyze the results | Mijin An |
 | 4      | Exercise some paramter tuning; Buffer manager code review; Project assignment | Mijin An |
 | 5      | **Project #1: MySQL** | Mijin An |
