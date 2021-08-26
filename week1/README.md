@@ -2,7 +2,7 @@
 
 ## Overview
 
-In this week, you will run the TPC-C benchmark on MySQL 5.7. Follow the guide below. If you have any questions, don't hesitate to get in touch with me via email (Mijin An / meeeeejin@gmail.com)
+In this week, you will learn how run the TPC-C benchmark on MySQL 5.7. Follow the guide below. If you have any questions, don't hesitate to get in touch with me via email (Mijin An / meeeeejin@gmail.com)
 
 > NOTE: This lab is based on the Linux environment. If you don't have a Linux machine, use [VirturalBox](https://www.virtualbox.org/). (Recommend Ubuntu 18.04)
 
