@@ -2,7 +2,7 @@
 
 ## Overview
 
-In this week, you will learn how to measure the hit/miss ratio in MySQL while running the TPC-C benchmark. Follow the guide below. If you have any questions, don't hesitate to get in touch with me via email (Mijin An / meeeeejin@gmail.com)
+In this week, you will learn how to measure the hit/miss ratio in MySQL while running the TPC-C benchmark. Follow the guide below. If you have any questions, don't hesitate to contact me via email (Mijin An / meeeeejin@gmail.com)
 
 > NOTE: This lab is based on the Linux environment. If you don't have a Linux machine, use [VirturalBox](https://www.virtualbox.org/). (Recommend Ubuntu 18.04)
 
@@ -111,7 +111,7 @@ mysql> show status like '%innodb_buffer_pool%';
 
 In this case, the hit ratio is `1 - (Innodb_buffer_pool_reads / Innodb_buffer_pool_read_requests)`.
 
-3. Observe how the hit/miss ratio changes over time and analyze the results yourself. You should submit a report for this results.
+3. Observe how the hit/miss ratio changes over time and analyze the results yourself. You should submit a report for this result.
 
 4. Close the MySQL session:
 
