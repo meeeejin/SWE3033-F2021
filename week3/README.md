@@ -8,7 +8,7 @@ In this week, you will learn how to measure the hit/miss ratio in MySQL while ru
 
 ## Instructions
 
-### Start a MySQL server
+### 1. Start a MySQL server
 
 1. Before starting a MySQL server, update the buffer pool size to 10% of your TPC-C database size. For example, if you load 20 warehouses (e.g., about 2G database size), change the value of `innodb_buffer_pool_size` in *my.cnf* to 200M:
 
@@ -25,7 +25,7 @@ innodb_buffer_pool_size=200M
 $ ./bin/mysqld_safe --defaults-file=/path/to/my.cnf
 ```
 
-### Run the TPC-C benchmark
+### 2. Run the TPC-C benchmark
 
 ```bash
 $ ./tpcc_start -h 127.0.0.1 -S /tmp/mysql.sock -d tpcc -u root -p "yourPassword" -w 20 -c 8 -r 10 -l 1200 | tee tpcc-result.txt
@@ -43,7 +43,7 @@ It means:
 - Rampup time: 10 (sec)
 - Measure: 1200 (sec)
 
-### Monitor the hit/miss ratio of MySQL
+### 3. Monitor the hit/miss ratio of MySQL
 
 1. Log in to the MySQL server:
 
