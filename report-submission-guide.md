@@ -1,6 +1,6 @@
 # Lab Report Submission
 
-Make sure that you submit only your own individual work.
+Make sure that you submit your own individual work.
 
 ## Formatting
 
