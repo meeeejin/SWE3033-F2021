@@ -111,11 +111,13 @@ mysql> show status like '%innodb_buffer_pool%';
 
 In this case, the hit ratio is `1 - (Innodb_buffer_pool_reads / Innodb_buffer_pool_read_requests)`.
 
-3. You can close the MySQL session and shut down the server using the below commands:
+3. Close the MySQL session:
 
 ```bash
 mysql> quit
 ```
+
+4. Shut down the MySQL server:
 
 ```bash
 $ ./bin/mysqladmin -uroot -pyourPassword shutdown
