@@ -111,7 +111,7 @@ mysql> show status like '%innodb_buffer_pool%';
 
 In this case, the hit ratio is `1 - (Innodb_buffer_pool_reads / Innodb_buffer_pool_read_requests)`.
 
-3. Observe how the hit/miss ratio changes over time and analyze the results yourself. You should submit a report for this result.
+3. Observe how the hit/miss ratio changes over time. Or try measuring the hit ratio by changing the buffer pool size. You should analyze the results yourself and submit a report for this result.
 
 4. Close the MySQL session:
 
