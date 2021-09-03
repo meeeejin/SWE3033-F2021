@@ -111,7 +111,7 @@ mysql> show status like '%innodb_buffer_pool%';
 
 In this case, the hit ratio is `1 - (Innodb_buffer_pool_reads / Innodb_buffer_pool_read_requests)`.
 
-3. Observe how the hit/miss ratio changes over time and analyze the results yourself. You should submit a report for this result.
+3. Observe how the hit/miss ratio changes over time and analyze the results yourself. You should submit a report for this results.
 
 4. Close the MySQL session:
 
@@ -124,6 +124,14 @@ mysql> quit
 ```bash
 $ ./bin/mysqladmin -uroot -pyourPassword shutdown
 ```
+
+## Report Submission
+
+1. Run the TPC-C benchmark on MySQL
+2. Observe how the hit rate of MySQL's buffer pool changes over time
+3. Analyze the results
+
+Organize the results into a single report and submit it. Follow the [submission guide](report-submission-guide.md) for your report.
 
 ## Reference
 - [Build and install the source code (5.7)](https://github.com/meeeejin/til/blob/master/mysql/build-and-install-the-source-code-5.7.md)

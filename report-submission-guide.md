@@ -6,7 +6,7 @@ Make sure that you submit only your own individual work.
 
 - Lab reports are submitted via *i-Campus*
 - Unless posted otherwise, Lab Reports are due by **Tuesday (midnight)** of the following week after lab
-- Late submissions are **penalized by 20%** of the total grade per day. Reports more than *2 weeks* late will **not be accepted**
+- Late submissions are **penalized by 20%** of the total grade per day. Reports more than **1 weeks late will not be accepted**
 
 ## Formatting
 
