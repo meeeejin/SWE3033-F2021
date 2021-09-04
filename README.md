@@ -20,20 +20,20 @@ From these three projects, you can learn how each database system works and unde
 | Week # | Contents     | TA |
 | :----: | :----------- | :-: |
 | 1      | Introduction |  |
-| 2      | [Introduction to MySQL and TPC-C benchmark](week2) | Mijin An |
-| 3      | [Run TPC-C and analyze the results](week3) | Mijin An |
-| 4      | Exercise some paramter tuning; Buffer manager code review; Project assignment | Mijin An |
-| 5      | **Project #1: MySQL** | Mijin An |
-| 6      | Introduction to RocksDB and YCSB benchmark | Mijin An |
-| 7      | TBD | Mijin An |
-| 8      | **Mid-term exam** |
-| 9      | TBD | Mijin An |
-| 10     | **Project #2: RocksDB** | Mijin An |
-| 11     | Introduction to SQLite and AndroBench | Jong-Hyeok Park |
+| 1      | [Introduction to MySQL and TPC-C benchmark](week2) | Mijin An |
+| 2      | [Run TPC-C and analyze the results](week3) | Mijin An |
+| 3      | Exercise some paramter tuning; Buffer manager code review; Project assignment | Mijin An |
+| 4      | **Project #1: MySQL** | Mijin An |
+| 5      | Introduction to RocksDB and YCSB benchmark | Mijin An |
+| 6      | TBD | Mijin An |
+| 7      | **Mid-term exam** |
+| 8      | TBD | Mijin An |
+| 9     | **Project #2: RocksDB** | Mijin An |
+| 10     | Introduction to SQLite and AndroBench | Jong-Hyeok Park |
+| 11     | TBD | Jong-Hyeok Park |
 | 12     | TBD | Jong-Hyeok Park |
-| 13     | TBD | Jong-Hyeok Park |
-| 14     | **Project #3: SQLite** | Jong-Hyeok Park |
-| 15     | **Final exam** |
+| 13     | **Project #3: SQLite** | Jong-Hyeok Park |
+| 14     | **Final exam** |
 
 ## Contact
 
