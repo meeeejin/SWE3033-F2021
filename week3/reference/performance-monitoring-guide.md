@@ -1,4 +1,4 @@
-# Performance Analysis
+# Performance Monitoring
 
 ## Check your system's specs
 
@@ -98,14 +98,10 @@ RAMP-UP TIME.(1200 sec.)
 
 MEASURING START.
 
-  10, trx: 493, 95%: 764.362, 99%: 1011.230, max_rt: 3165.036, 460|7427.418, 48|1684.188, 51|3922.317, 51|
-5881.677
-  20, trx: 456, 95%: 838.937, 99%: 1053.247, max_rt: 1200.276, 465|3532.571, 46|324.480, 45|1275.379, 49|5
-178.482
-  30, trx: 503, 95%: 828.704, 99%: 1013.655, max_rt: 2262.165, 491|4421.898, 50|410.298, 50|1592.177, 44|4
-334.301
-  40, trx: 511, 95%: 905.753, 99%: 1057.354, max_rt: 1341.675, 529|2798.316, 51|387.980, 51|3083.647, 50|5
-330.978
+  10, trx: 493, 95%: 764.362, 99%: 1011.230, max_rt: 3165.036, 460|7427.418, 48|1684.188, 51|3922.317, 51|5881.677
+  20, trx: 456, 95%: 838.937, 99%: 1053.247, max_rt: 1200.276, 465|3532.571, 46|324.480, 45|1275.379, 49|5178.482
+  30, trx: 503, 95%: 828.704, 99%: 1013.655, max_rt: 2262.165, 491|4421.898, 50|410.298, 50|1592.177, 44|4334.301
+  40, trx: 511, 95%: 905.753, 99%: 1057.354, max_rt: 1341.675, 529|2798.316, 51|387.980, 51|3083.647, 50|5330.978
 ...
 STOPPING THREADS................................................................
 
@@ -141,9 +137,13 @@ STOPPING THREADS................................................................
                  3634.300 TpmC
 ```
 
-- Note the `TpmC` value
-- The metric for evaluating TPC-C performance is the number of transactions completed per minute (TpmC)
-- In the example above, the `TpmC = 3634`. And it means that 3634 *New-Order* transactions were processed per minute
+- Note the `TpmC` value, a key performance metric of the TPC-C benchmark
+  - It is the number of transactions completed per minute (TpmC)
+  - In the example above, the `TpmC = 3634`. And it means that 3634 *New-Order* transactions were processed per minute
+- `95%: 764.362` - The 95% Response time of New Order transactions per given interval
+- `99%: 1011.230` - The 99% Response time of New Order transactions per given interval
+- `max_rt: 3165.036` - The Max Response time of New Order transactions per given interval
+- `460|7427.418, 48|1684.188, 51|3922.317, 51|5881.677` - throughput and max response time for the other kind of transactions and can be ignored
 
 ## Monitoring I/O status using `iostat`
 
@@ -178,72 +178,73 @@ sdc               0.00     0.00    0.00    0.00     0.00     0.00     0.00     0
   - Especially, `r/s`, `w/s`, `rMB/s`, `wMB/s`, `%util`, `avg-cpu`
   - [More details](https://man7.org/linux/man-pages/man1/iostat.1.html)
 
-## Monitoring MySQL's Buffer Hit Rate
+## Monitoring CPU status using `mpstat` or `htop`
+
+### `mpstat`
 
 ```bash
-$ ./bin/mysql -uroot -pyourPassword
-Welcome to the MySQL monitor.  Commands end with ; or \g.Your MySQL connection id is 8Server version: 8.0.15 Source distribution
-Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
+$ mpstat -P ALL 1
+Linux 5.4.0-80-generic (u18)    2021년 09월 04일        _x86_64_        (32 CPU)
 
-Oracle is a registered trademark of Oracle Corporation and/or its
-affiliates. Other names may be trademarks of their respective
-owners.
-
-Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
-mysql> show engine innodb status;
+16시 58분 06초  CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal  %guest  %gnice   %idle
+16시 58분 07초  all    4.17    0.00    1.10    1.63    0.00    0.44    0.00    0.00    0.00   92.66
+16시 58분 07초    0    0.99    0.00    0.99    0.00    0.00    1.98    0.00    0.00    0.00   96.04
+16시 58분 07초    1    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00  100.00
 ...
-----------------------
-BUFFER POOL AND MEMORY
-----------------------
-Total large memory allocated 274857984
-Dictionary memory allocated 152634
-Buffer pool size   16384
-Free buffers       68
-Database pages     15636
-Old database pages 5751
-Modified db pages  8056
-Pending reads      6
-Pending writes: LRU 121, flush list 0, single page 0
-Pages made young 108465, not young 1341192
-0.00 youngs/s, 0.00 non-youngs/s
-Pages read 418624, created 5399, written 193750
-0.00 reads/s, 0.00 creates/s, 0.00 writes/s
-Buffer pool hit rate 969 / 1000, young-making rate 8 / 1000 not 107 / 1000
-Pages read ahead 0.00/s, evicted without access 0.00/s, Random read ahead 0.00/s
-LRU len: 15636, unzip_LRU len: 0
-I/O sum[215312]:cur[1985], unzip sum[0]:cur[0]
-...
+16시 58분 07초   30    1.03    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00   98.97
+16시 58분 07초   31    6.93    0.00    0.99    2.97    0.00    0.99    0.00    0.00    0.00   88.12
 ```
 
-Note the `Buffer pool hit rate` metric. It means *the buffer pool page hit rate for pages read from the buffer pool vs. from disk storage*. You can calculate the miss ratio by `1 - Buffer pool hit rate`. In the example above, `Buffer pool hit rate 969 / 1000` corresponds to 96.9% hit rate.
+- Field description
+  - CPU: Processor number
+  - %usr: Show the percentage of CPU utilization that occurred while executing at the user level (application)
+  - %sys: Show the percentage of CPU utilization that occurred while executing at the system level (kernel)
+  - %iowait: Show the percentage of time that the CPU or CPUs were idle during which the system had an outstanding disk I/O request
+  - %idle: Show the percentage of time that the CPU or CPUs were idle and the system did not have an outstanding disk I/O reque
+- [More details](https://man7.org/linux/man-pages/man1/mpstat.1.html)
 
-Or you can use `show status like '%innodb_buffer_pool%'` to monitor the hit/miss ratio:
+### `htop`
 
 ```bash
-mysql> show status like '%innodb_buffer_pool%';
-+---------------------------------------+--------------------------------------------------+
-| Variable_name                         | Value                                            |
-+---------------------------------------+--------------------------------------------------+
-| Innodb_buffer_pool_dump_status        | Dumping of buffer pool not started               |
-| Innodb_buffer_pool_load_status        | Buffer pool(s) load completed at 210903 17:40:25 |
-| Innodb_buffer_pool_resize_status      |                                                  |
-| Innodb_buffer_pool_pages_data         | 15631                                            |
-| Innodb_buffer_pool_bytes_data         | 256098304                                        |
-| Innodb_buffer_pool_pages_dirty        | 7975                                             |
-| Innodb_buffer_pool_bytes_dirty        | 130662400                                        |
-| Innodb_buffer_pool_pages_flushed      | 414867                                           |
-| Innodb_buffer_pool_pages_free         | 97                                               |
-| Innodb_buffer_pool_pages_misc         | 656                                              |
-| Innodb_buffer_pool_pages_total        | 16384                                            |
-| Innodb_buffer_pool_read_ahead_rnd     | 0                                                |
-| Innodb_buffer_pool_read_ahead         | 0                                                |
-| Innodb_buffer_pool_read_ahead_evicted | 0                                                |
-| Innodb_buffer_pool_read_requests      | 29154292                                         |
-| Innodb_buffer_pool_reads              | 916923                                           |
-| Innodb_buffer_pool_wait_free          | 46805                                            |
-| Innodb_buffer_pool_write_requests     | 6627242                                          |
-+---------------------------------------+--------------------------------------------------+
+$ sudo apt-get install htop
+$ htop
 ```
 
-In this case, the hit ratio is `1 - (Innodb_buffer_pool_reads / Innodb_buffer_pool_read_requests)`.
+## Monitoring memory status using `vmstat`
+
+```bash
+$ $ vmstat 1
+procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+ 1  3 1913088 19874980 1386900 9064876    0    0   224   223    1    0  2  0 97  1  0
+ 0  4 1913088 19873088 1387100 9064892    0    0 46624 53844 8703 55258  3  1 94  2  0
+ 3  3 1913088 19874632 1387200 9064876    0    0 52912 52444 9404 60254  3  2 93  2  0
+ 1  2 1913088 19876232 1387360 9064880    0    0 51280 51420 9337 61119  4  1 93  2  0
+ 1  3 1913088 19876308 1387528 9064844   28    0 57356 56148 10189 69357  4  2 91  2  0
+ 4  1 1913088 19874784 1387700 9064944    0    0 41920 45128 8703 53901  3  1 94  2  0
+```
+
+- Field description
+  - Procs
+    - r: The number of runnable processes (running or waiting for run time)
+    - b: The number of processes blocked waiting for I/O to complete
+  - Memory
+    - swpd: the amount of swap memory used
+    - free: the amount of idle memory
+    - buff: the amount of memory used as buffers
+  - Swap
+    - si: Amount of memory swapped in from disk (/s)
+    - so: Amount of memory swapped to disk (/s)
+  - IO
+    - bi: Blocks received from a block device (blocks/s)
+    - bo: Blocks sent to a block device (blocks/s)
+  - System
+    - in: The number of interrupts per second, including the clock
+    - cs: The number of context switches per second
+  - CPU
+    - us: Time spent running non-kernel code (user time, including nice time)
+    - sy: Time spent running kernel code (system time)
+    - id: Time spent idle
+    - wa: Time spent waiting for IO
+    - st: Time stolen from a virtual machine
+- [More details](https://man7.org/linux/man-pages/man8/vmstat.8.html)

@@ -2,7 +2,9 @@
 
 ## Overview
 
-This week, you will learn how to monitor MySQL and the system performance while running the TPC-C benchmark. Follow the guide below. If you have any questions, don't hesitate to contact me via email (Mijin An / meeeeejin@gmail.com)
+This week, you will learn to monitor the system performance while running the TPC-C benchmark on MySQL. You will also learn what those performance metrics mean.
+
+Follow the guide below. If you have any questions, don't hesitate to contact me via email (Mijin An / meeeeejin@gmail.com)
 
 > NOTE: This lab is based on the Linux environment. If you don't have a Linux machine, use [VirturalBox](https://www.virtualbox.org/). (Recommend Ubuntu 18.04)
 
@@ -47,7 +49,7 @@ It means:
 
 ### 3. Monitor the MySQL and overall system
 
-1. *While running the benchmark*, collect performance metrics (I/O status and hit ratio) and record them in a separate file for future analysis. Refer to the [performance analysis guide](reference/performance-analysis-guide.md) to gather performance metrics while running the TPC-C benchmark on MySQL 5.7
+1. *While running the benchmark*, collect performance metrics (e.g., I/O status and transaction throughput) and record them in a separate file for future analysis. Refer to the [performance monitoring guide](reference/performance-monitoring-guide.md) to gather performance metrics while running the TPC-C benchmark on MySQL 5.7
 
 2. After the benchmark ends, take a screenshot of the TPC-C output and add it to your report
 
