@@ -62,7 +62,7 @@ $ ./bin/mysqladmin -uroot -pyourPassword shutdown
 ## Report Submission
 
 1. Run the TPC-C benchmark on MySQL
-2. Observe how the performance metrics and TpmC changes over time
+2. Observe how the performance metrics and TpmC change over time
 3. Present the experimental results
 4. Analyze the results
 
