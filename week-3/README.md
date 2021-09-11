@@ -47,7 +47,7 @@ It means:
 - Rampup time: 10 (sec)
 - Measure: 1200 (sec)
 
-### 3. Monitor the MySQL and the overall system
+### 3. Monitor the buffer hit/miss ratio of MySQL
 
 1. *While running the benchmark*, collect performance metrics (e.g., I/O status, transaction throughput, hit/miss ratio) and record them in a separate file for future analysis. Refer to the [performance monitoring guide](../week-2/reference/performance-monitoring-guide.md) and [hit ratio monitoring guide](reference/hit-ratio-monitoring-guide.md)
 
@@ -56,6 +56,8 @@ It means:
 ```bash
 $ ./bin/mysqladmin -uroot -pyourPassword shutdown
 ```
+
+### 4. Change the buffer size and repeat steps 1-3
 
 ## Report Submission
 
