@@ -51,9 +51,7 @@ It means:
 
 1. *While running the benchmark*, collect performance metrics (e.g., I/O status, transaction throughput, hit/miss ratio) and record them in a separate file for future analysis. Refer to the [performance monitoring guide](../week-2/reference/performance-monitoring-guide.md) and [hit ratio monitoring guide](reference/hit-ratio-monitoring-guide.md)
 
-2. After the benchmark ends, take a screenshot of the TPC-C output and add it to your report
-
-3. Shut down the MySQL server:
+2. After the benchmark ends, shut down the MySQL server:
 
 ```bash
 $ ./bin/mysqladmin -uroot -pyourPassword shutdown
@@ -64,6 +62,7 @@ $ ./bin/mysqladmin -uroot -pyourPassword shutdown
 1. Run the TPC-C benchmark on MySQL by varying the buffer size of MySQL
     - 10%, 20%, 30%, 40%, 50% of the database size
 2. Observe how the performance metrics (e.g., IOPS, hit ratio, etc.) and TpmC change over time
+    - Especially, monitor the buffer hit ratio at the start and end of the benchmark 
 3. Present the experimental results
 4. Analyze the results
 
