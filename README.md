@@ -20,9 +20,9 @@ From these three projects, you can learn how each database system works and unde
 | Week # | Contents     | TA |
 | :----: | :----------- | :-: |
 | 1      | Introduction |  |
-| 1      | [Introduction to MySQL and TPC-C benchmark](week2) | Mijin An |
-| 2      | [Run TPC-C and analyze the results](week3) | Mijin An |
-| 3      | Exercise some paramter tuning; Buffer manager code review; Project assignment | Mijin An |
+| 1      | [Introduction to MySQL and TPC-C benchmark](week-1) | Mijin An |
+| 2      | [Run TPC-C and analyze the results](week-2) | Mijin An |
+| 3      | [Measure MySQL performanceby varying the buffer size](week-3) | Mijin An |
 | 4      | **Project #1: MySQL** | Mijin An |
 | 5      | Introduction to RocksDB and YCSB benchmark | Mijin An |
 | 6      | TBD | Mijin An |
