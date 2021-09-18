@@ -18,7 +18,7 @@ Follow the guide below. If you have any questions, don't hesitate to contact me 
 $ rm -rf /path/to/datadir/*
 ```
 
-2. Use `mysqld --initialize` to initialize the data directory, including the *mysql* database containing the initial MySQL grant tables that determine how users are permitted to connect to the server:
+2. Use `mysqld --initialize` to initialize the data directory:
 - `--datadir` : the path to the MySQL data directory
 - `--basedir` : the path to the MySQL installation directory
 
@@ -135,12 +135,13 @@ It means:
 $ ./bin/mysqladmin -uroot -pyourPassword shutdown
 ```
 
-### 4. Change the page size and repeat steps 1-3
+### 5. Change the page size and repeat steps 1-4
 
 ## Report Submission
 
-1. Load and Run the TPC-C benchmark on MySQL by varying the page size of MySQL
+1. Load the TPC-C data with different page sizes and run the benchmark on MySQL
     - 4KB, 8KB, 16KB
+    - Set the buffer size as you want (within 10% to 50% of database size)
 2. Observe how the performance metrics (e.g., IOPS, hit ratio, etc.) and TpmC change over time
 3. Present the experimental results
 4. Analyze the results
