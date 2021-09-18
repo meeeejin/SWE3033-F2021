@@ -31,7 +31,7 @@ $ ./bin/mysqld --initialize --innodb_page_size=4k --user=mysql --datadir=/path/t
 3. Reset the root password:
 
 ```bash
-$ ./bin/mysqld_safe --skip-grant-tables --datadir=/path/to/datadir
+$ ./bin/mysqld_safe --skip-grant-tables --innodb_page_size=4k --datadir=/path/to/datadir
 
 $ ./bin/mysql -uroot
 
