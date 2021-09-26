@@ -18,109 +18,55 @@ $ sudo gem install rake
 $ sudo gem install innodb_ruby -v 0.9.16
 ```
 
+### 2. Clone the lab repository
+
 ```bash
-$ ./cal-free-space-from-ibd-16k ~/data_backup2/data/tpcc500/item.ibd result.txt
+$ git clone https://github.com/meeeejin/SWE3033-F2021
+$ cd week-5/bin
+```
+
+There are two binary files: `cal-free-space-from-ibd` and `cal-free-space-percentile-from-parsed-file`. 
+
+1. `cal-free-space-from-ibd`: calculate the free space of each page from the *.ibd* file
+2. `cal-free-space-percentile-from-parsed-file`: calculate the space percentile from the parsed file.
+
+Use the appropriate file according to the database page size you are using. For example, if you are using 4K page size, use `cal-free-space-from-ibd-4k` and `cal-free-space-percentile-from-parsed-file-4k`.
+
+### 3. Check the space utilization before the TPC-C benchmark
+
+```bash
+$ ./cal-free-space-from-ibd-16k tpcc/item.ibd result.txt
 $ ./cal-free-space-percentile-from-parsed-file-16k space-summary.txt result.txt
 ```
 
-### 1. Initialize the MySQL data directory with the target page size
+- `cal-free-space-from-ibd [target ibd file] [output file]`
+  - After running the binary file, you can get the overall space utilization from the `output file`
+  - You can also get another output file `space-summary.txt` which shows the free space of each page in `target ibd file`
+- `cal-free-space-percentile-from-parsed-file [parsed file] [output file]`
+  - e.g., `cal-free-space-percentile-from-parsed-file space-summary.txt result.txt`
+  - After running the binary file, you can get percentile information from the `output file`:
+  ```bash
+  Percentage      Count
+  0 - 10          5934    (34.1%)
+  10 - 20         447     (2.6%)
+  20 - 30         427     (2.5%)
+  30 - 40         497     (2.9%)
+  40 - 50         1280    (7.4%)
+  50 - 60         705     (4.1%)
+  60 - 70         4842    (27.8%)
+  70 - 80         1264    (7.3%)
+  80 - 90         1459    (8.4%)
+  90 - 100        544     (3%)
+  Total           17399   (100%)
+  ```
 
-1. Remove all old data from MySQL data directory:
-
-```bash
-$ rm -rf /path/to/datadir/*
-```
-
-2. Use `mysqld --initialize` to initialize the data directory:
-- `--datadir` : the path to the MySQL data directory
-- `--basedir` : the path to the MySQL installation directory
-
-If you want to change the page size to 4K (default: 16K), add the `innodb_page_size` parameter. For example:
-
-```bash
-$ ./bin/mysqld --initialize --innodb_page_size=4k --user=mysql --datadir=/path/to/datadir --basedir=/path/to/basedir
-```
-
-3. Reset the root password:
-
-```bash
-$ ./bin/mysqld_safe --skip-grant-tables --innodb_page_size=4k --datadir=/path/to/datadir
-
-$ ./bin/mysql -uroot
-
-root:(none)> use mysql;
-
-root:mysql> update user set authentication_string=password('yourPassword') where user='root';
-root:mysql> flush privileges;
-root:mysql> quit;
-
-$ ./bin/mysql -uroot -p
-
-root:mysql> set password = password('yourPassword');
-root:mysql> quit;
-```
-
-### 2. Start a MySQL server
-
-1. Before starting a MySQL server, update the page size to the target page size. For example, if you want to use 4KB pages, change the value of `innodb_page_size` in *my.cnf* to 4KB:
-
-```bash
-$ vi /path/to/my.cnf
-...
-innodb_page_size=4KB
-...
-```
-
-2. Start a MySQL server:
+### 4. Start a MySQL server
 
 ```bash
 $ ./bin/mysqld_safe --defaults-file=/path/to/my.cnf
 ```
 
-### 3. Load the TPC-C data and Run the benchmark
-
-1. You need to create a database with the changed page size. Create a database for the TPC-C test. Go to the MySQL base directory and run the following commands:
-
-```bash
-$ ./bin/mysql -u root -p -e "CREATE DATABASE tpcc;"
-$ ./bin/mysql -u root -p tpcc < /path/to/tpcc-mysql/create_table.sql
-$ ./bin/mysql -u root -p tpcc < /path/to/tpcc-mysql/add_fkey_idx.sql
-```
-
-2. Then go back to the tpcc-mysql directory and load data:
-
-> NOTE: Before executing the below commands, change the warehouse value (`-w 20`) to the proper value considering your system's free space. One warehouse occupies about 100MB.
-
-```bash
-$ cd tpcc-mysql
-$ ./tpcc_load -h 127.0.0.1 -d tpcc -u root -p "yourPassword" -w 20
-*************************************
-*** TPCC-mysql Data Loader        ***
-*************************************
-option h with value '127.0.0.1'
-option d with value 'tpcc'
-option u with value 'root'
-option p with value 'yourPassword'
-option w with value '20'
-<Parameters>
-     [server]: 127.0.0.1
-     [port]: 3306
-     [DBname]: tpcc
-       [user]: root
-       [pass]: 1234
-  [warehouse]: 20
-TPCC Data Load Started...
-Loading Item
-.................................................. 5000
-.................................................. 10000
-.................................................. 15000
-...
-...DATA LOADING COMPLETED SUCCESSFULLY.
-```
-
-In this case, database size is about 2GB (= 20 warehouses).
-
-3. After loading, run the benchmark by modifying the experimental parameters to match your system specifications. For example:
+### 5. Run the benchmark
 
 ```bash
 $ ./tpcc_start -h 127.0.0.1 -S /tmp/mysql.sock -d tpcc -u root -p "yourPassword" -w 20 -c 8 -r 10 -l 1200 | tee tpcc-result.txt
@@ -138,26 +84,27 @@ It means:
 - Rampup time: 10 (sec)
 - Measure: 1200 (sec)
 
-### 4. Monitor the buffer hit/miss ratio of MySQL
+### 6. After the benchmark, check the space utilization of the TPC-C tables
 
-1. *While running the benchmark*, collect performance metrics (e.g., I/O status, transaction throughput, hit/miss ratio) and record them in a separate file for future analysis. Refer to the [performance monitoring guide](../week-2/reference/performance-monitoring-guide.md) and [hit ratio monitoring guide](../week-3/reference/hit-ratio-monitoring-guide.md)
+```bash
+$ ./cal-free-space-from-ibd-16k tpcc/item.ibd result.txt
+$ ./cal-free-space-percentile-from-parsed-file-16k space-summary.txt result.txt
+```
 
-2. After the benchmark ends, shut down the MySQL server:
+Check the space utilization of the pages of each table. And compare the percentile distribution at the end of the benchmark to the start of the benchmark. ([example](https://gist.github.com/meeeejin/78de52ef0bc60833d0bf70102b21a367))
 
+### 7. Shut down the MySQL server
 ```bash
 $ ./bin/mysqladmin -uroot -pyourPassword shutdown
 ```
 
-### 5. Change the page size and repeat steps 1-4
-
 ## Report Submission
 
-1. Load the TPC-C data with different page sizes and run the benchmark on MySQL
-    - 4KB, 8KB, 16KB
-    - Set the buffer size as you want (within 10% to 50% of database size)
-2. Observe how the performance metrics (e.g., IOPS, hit ratio, etc.) and TpmC change over time
-3. Present the experimental results
-4. Analyze the results
+1. Before the benchmark, check the space utilization
+2. Run the TPC-C benchmark on MySQL
+3. After the benchmark, check the space utilization
+4. Compare the space utilization at the end of the benchmark to the start of the benchmark
+5. Present the experimental results and analyze them
 
 Organize the results into a single report and submit it. Follow the [submission guide](../report-submission-guide.md) for your report.
 
