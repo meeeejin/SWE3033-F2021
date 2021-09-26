@@ -40,6 +40,7 @@ $ ./cal-free-space-percentile-from-parsed-file-16k space-summary.txt result.txt
 ```
 
 - `cal-free-space-from-ibd [target ibd file] [output file]`
+  - `target ibd file`: *.ibd* file is the data file extension of MySQL (e.g., tpcc/history.ibd = History table of TPC-C database)
   - After running the binary file, you can get the overall space utilization from the `output file`:
   ```bash
   # Parsing Result
