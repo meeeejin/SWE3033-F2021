@@ -30,7 +30,7 @@ There are two binary files: `cal-free-space-from-ibd` and `cal-free-space-percen
 1. `cal-free-space-from-ibd`: calculate the free space of each page from the *.ibd* file
 2. `cal-free-space-percentile-from-parsed-file`: calculate the space percentile from the parsed file.
 
-Use the appropriate file according to the database page size you are using. For example, if you are using 4K page size, use `cal-free-space-from-ibd-4k` and `cal-free-space-percentile-from-parsed-file-4k`.
+Use the appropriate file according to the database page size you use. For example, if you use 4K page size, use `cal-free-space-from-ibd-4k` and `cal-free-space-percentile-from-parsed-file-4k`.
 
 ### 3. Check the space utilization before the TPC-C benchmark
 
@@ -40,11 +40,36 @@ $ ./cal-free-space-percentile-from-parsed-file-16k space-summary.txt result.txt
 ```
 
 - `cal-free-space-from-ibd [target ibd file] [output file]`
-  - After running the binary file, you can get the overall space utilization from the `output file`
-  - You can also get another output file `space-summary.txt` which shows the free space of each page in `target ibd file`
+  - After running the binary file, you can get the overall space utilization from the `output file`:
+  ```bash
+  # Parsing Result
+  Total number of pages = 5117
+  Total free space = 11653729
+  Average free space per page = 2277 (55.60%)
+
+  - Leaf Pages
+  Total number of pages = 5106
+  Total free space = 11645697
+  Average free space per page = 2280 (55.68%)
+  Min free space = 259
+  Max free space = 4096
+
+  - Non-leaf Pages
+  Total number of pages = 11
+  Total free space = 8032
+  Average free space per page = 730 (17.83%)
+  Min free space = 8
+  Max free space = 3822
+  ```
+  - You can also get another output file `space-summary.txt` which shows the free space of each page in `target ibd file`:
+  ```bash
+  page        index   level   data    free    records
+  3           46      2       935     3015    55
+  4           51      2       882     3066    42
+  ...
+  ```
 - `cal-free-space-percentile-from-parsed-file [parsed file] [output file]`
-  - e.g., `cal-free-space-percentile-from-parsed-file space-summary.txt result.txt`
-  - After running the binary file, you can get percentile information from the `output file`:
+  - After running the binary file, you can get the percentile information from the `output file`:
   ```bash
   Percentage      Count
   0 - 10          5934    (34.1%)
