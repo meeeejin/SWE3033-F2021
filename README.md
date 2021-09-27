@@ -24,7 +24,7 @@ From these three projects, you can learn how each database system works and unde
 | 2      | [Run TPC-C and analyze the results](week-2) | Mijin An |
 | 3      | [Measure MySQL performance by varying the buffer size](week-3) | Mijin An |
 | 4      | [Effect of page size on performance](week-4) | Mijin An |
-| 5      | Introduction to RocksDB and YCSB benchmark | Mijin An |
+| 5      | [Space Utilization of MySQL](week-5) | Mijin An |
 | 6      | TBD | Mijin An |
 | 7      | **Mid-term exam** |
 | 8      | TBD | Mijin An |
