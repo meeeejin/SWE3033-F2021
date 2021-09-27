@@ -126,9 +126,9 @@ $ ./bin/mysqladmin -uroot -pyourPassword shutdown
 
 ## Report Submission
 
-1. Before the benchmark, check the space utilization
+1. Before the benchmark, check the space utilization (of TPC-C 9 tables)
 2. Run the TPC-C benchmark on MySQL
-3. After the benchmark, check the space utilization
+3. After the benchmark, check the space utilization (of TPC-C 9 tables)
 4. Compare the space utilization at the end of the benchmark to the start of the benchmark
 5. Present the experimental results and analyze them
 
