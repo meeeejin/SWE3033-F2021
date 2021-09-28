@@ -14,6 +14,10 @@ Follow the guide below. If you have any questions, don't hesitate to contact me 
 
 ```bash
 $ sudo apt-get install gem
+$ sudo apt-get install rubygems ruby-dev
+```
+
+```bash
 $ sudo gem install rake
 $ sudo gem install innodb_ruby -v 0.9.16
 ```
