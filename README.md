@@ -25,7 +25,7 @@ From these three projects, you can learn how each database system works and unde
 | 3      | [Measure MySQL performance by varying the buffer size](week-3) | Mijin An |
 | 4      | [Effect of page size on performance](week-4) | Mijin An |
 | 5      | [Space Utilization of MySQL](week-5) | Mijin An |
-| 6      | TBD | Mijin An |
+| 6      | [RocksDB: An Introduction](week-6) | Mijin An |
 | 7      | **Mid-term exam** |
 | 8      | TBD | Mijin An |
 | 9     | **Project #2: RocksDB** | Mijin An |
