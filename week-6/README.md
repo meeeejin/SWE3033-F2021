@@ -46,15 +46,32 @@ $ ./db_bench --help
 
 For the report, run the below command and measure the performance of RocksDB on your system:
 
+> Update `-db="/path/to/datadir"` path according to your experimetal environment
+
 ```bash
 $ ./db_bench --benchmarks="readrandomwriterandom" \
-  -db="/home/vldb/rocksdb-data" \
+  -db="/path/to/datadir" \
   -use_direct_io_for_flush_and_compaction=true \
   -use_direct_reads=true \
   -duration=600 \
   -statistics \
   -stats_interval_seconds=10 2>&1 | tee result.txt
 ```
+
+### 4. Record the experimental result
+
+At the end of the benchmark, you can see the below result:
+
+```bash
+...
+readrandomwriterandom :      53.084 micros/op 18838 ops/sec; ( reads:10172700 writes:1130299 total:1000000 found:4076910)
+...
+```
+
+- `micros/op`: Microseconds spent processing one operation
+- `ops/sec`: Processed operations per second
+
+Show all of the above results in your report.
 
 ## Report Submission
 
