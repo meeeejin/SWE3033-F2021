@@ -44,7 +44,7 @@ Follow the guide below. If you have any questions, don't hesitate to contact me 
 - `-stats_dump_period_sec=30`: Gap between printing stats to log in seconds
 - `-stats_interval_seconds=10`: Report stats every N second
 
-> When using leveled compaction, if the level does not increase, you need to increase the benchmark execution time or adjust the memtable size or the multiplier value according to the free capacity of your system.
+> When using the leveled compaction, if the level does not increase, you need to increase the benchmark execution time or adjust the memtable size or the multiplier value according to the free capacity of your system.
 
 ### 2. Compare the RocksDB stats by varying the compaction style
 
