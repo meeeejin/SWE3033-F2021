@@ -19,16 +19,15 @@ From these three projects, you can learn how each database system works and unde
 
 | Week # | Contents     | TA |
 | :----: | :----------- | :-: |
-| 1      | Introduction |  |
 | 1      | [Introduction to MySQL and TPC-C benchmark](week-1) | Mijin An |
 | 2      | [Run TPC-C and analyze the results](week-2) | Mijin An |
 | 3      | [Measure MySQL performance by varying the buffer size](week-3) | Mijin An |
 | 4      | [Effect of page size on performance](week-4) | Mijin An |
 | 5      | [Space Utilization of MySQL](week-5) | Mijin An |
 | 6      | [RocksDB: An Introduction](week-6) | Mijin An |
-| 7      | **Mid-term exam** |
-| 8      | TBD | Mijin An |
-| 9     | **Project #2: RocksDB** | Mijin An |
+| 7      | [RocksDB Compaction](week-7) | Mijin An |
+| 8      | **Mid-term exam** | Mijin An |
+| 9      | TBD | Mijin An |
 | 10     | Introduction to SQLite and AndroBench | Jong-Hyeok Park |
 | 11     | TBD | Jong-Hyeok Park |
 | 12     | TBD | Jong-Hyeok Park |
