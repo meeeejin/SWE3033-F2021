@@ -48,6 +48,10 @@ Follow the guide below. If you have any questions, don't hesitate to contact me 
 
 ### 2. Compare the RocksDB stats by varying the compaction style
 
+Change the compaction style and observe the compaction result in `/path/to/rocksdb-data/LOG`. Show all of the below results (**for both leveled and universal compaction**) in your report.
+
+1. Leveled compaction:
+
 ```bash
 $ vim /path/to/rocksdb-data
 ...
@@ -62,7 +66,19 @@ Level    Files   Size     Score Read(GB)  Rn(GB) Rnp1(GB) Write(GB) Wnew(GB) Mov
  ...
 ```
 
-Change the compaction style and observe the compaction result in `/path/to/rocksdb-data/LOG`. Show all of the above results (for both leveled and universal compaction) in your report.
+2. Universal compaction:
+
+```bash
+...
+** Compaction Stats [default] **
+Level    Files   Size     Score Read(GB)  Rn(GB) Rnp1(GB) Write(GB) Wnew(GB) Moved(GB) W-Amp Rd(MB/s) Wr(MB/s) Comp(sec) CompMergeCPU(sec) Comp(cnt) Avg(sec) KeyIn KeyDrop Rblob(GB) Wblob(GB)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  L0      1/0   24.15 MB   0.0      0.0     0.0      0.0       0.8      0.8       0.0   1.0      0.0     84.3      9.16              8.74        32    0.286       0      0       0.0       0.0
+  L6      1/0   61.43 MB   0.0      1.3     0.7      0.5       0.6      0.1       0.0   0.8    106.0     49.5     12.16             11.34        10    1.216     20M    10M       0.0       0.0
+ Sum      2/0   85.58 MB   0.0      1.3     0.7      0.5       1.3      0.8       0.0   1.8     60.4     64.5     21.32             20.08        42    0.508     20M    10M       0.0       0.0
+ Int      0/0    0.00 KB   0.0      0.0     0.0      0.0       0.0      0.0       0.0   1.0      0.0     86.7      0.28              0.27         1    0.279       0      0       0.0       0.0
+...
+```
 
 ## Report Submission
 
