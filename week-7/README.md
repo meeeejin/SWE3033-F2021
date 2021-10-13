@@ -52,6 +52,8 @@ Change the compaction style and observe the compaction result in `/path/to/rocks
 
 1. Leveled compaction:
 
+> I recommend to run the benchmark until the level increases more than 2.
+
 ```bash
 $ vim /path/to/rocksdb-data
 ...
@@ -67,6 +69,28 @@ Level    Files   Size     Score Read(GB)  Rn(GB) Rnp1(GB) Write(GB) Wnew(GB) Mov
 ```
 
 2. Universal compaction:
+
+> Compaction is always scheduled for sorted runs with consecutive time ranges and the outputs are always another sorted run. RocksDB always place compaction outputs to the highest possible level, following the rule of older data on levels with larger numbers. For example:
+
+```bash
+Level 0: File0_0
+Level 1: (empty)
+Level 2: (empty)
+Level 3: (empty)
+Level 4: File4_0', File4_1', File4_2', File4_3'
+Level 5: File5_0, File5_1, File5_2, File5_3, File5_4, File5_5, File5_6, File5_7
+
+or
+
+Level 0: File0_0, File0_1, File0_2
+Level 1: (empty)
+Level 2: (empty)
+Level 3: (empty)
+Level 4: File4_0, File4_1, File4_2, File4_3
+Level 5: File5_0, File5_1, File5_2, File5_3, File5_4, File5_5, File5_6, File5_7
+```
+
+In the RocksDB log file, you can get the below stat:
 
 ```bash
 ...
@@ -93,3 +117,4 @@ Organize the results into a single report and submit it. Follow the [submission 
 - [RocksDB Installation](https://github.com/facebook/rocksdb/blob/main/INSTALL.md)
 - [RocksDB Benchmarking tools](https://github.com/facebook/rocksdb/wiki/Benchmarking-tools)
 - [Mijin An, How to use db_bench](https://github.com/meeeejin/til/blob/master/rocksdb/how-to-use-db_bench.md)
+- [Rocksdb Universal Compaction](https://github.com/facebook/rocksdb/wiki/Universal-Compaction)
