@@ -54,6 +54,8 @@ Change the compaction style and observe the compaction result in `/path/to/rocks
 
 > I recommend to run the benchmark until the level increases more than **2**.
 
+In the RocksDB log file, you can get the below stat:
+
 ```bash
 $ vim /path/to/rocksdb-data
 ...
@@ -70,7 +72,7 @@ Level    Files   Size     Score Read(GB)  Rn(GB) Rnp1(GB) Write(GB) Wnew(GB) Mov
 
 2. Universal compaction:
 
-> Compaction is always scheduled for sorted runs with consecutive time ranges and the outputs are always another sorted run. **RocksDB always place compaction outputs to the highest possible level**, following the rule of older data on levels with larger numbers. For example:
+> Compaction is always scheduled for sorted runs with consecutive time ranges and the outputs are always another sorted run. **RocksDB always places compaction outputs to the highest possible level**, following the rule of older data on levels with larger numbers. For example:
 
 ```bash
 Level 0: File0_0
@@ -89,6 +91,8 @@ Level 3: (empty)
 Level 4: File4_0, File4_1, File4_2, File4_3
 Level 5: File5_0, File5_1, File5_2, File5_3, File5_4, File5_5, File5_6, File5_7
 ```
+
+Therefore, the level increases over time in universal compaction. It only increases the level at which data is stored and the compaction mechanism is totally different from the leveled compaction.
 
 In the RocksDB log file, you can get the below stat:
 
