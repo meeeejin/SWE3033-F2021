@@ -66,7 +66,7 @@ Observe how WAF (`W-Amp`) differs from level to level. Also, compare these resul
 ## Report Submission
 
 1. Run DB_Bench by varying the SST file size
-    - At least three different SST file sizes
+    - *At least three different SST file sizes*
 2. Observe how WAF changes
     - Observe the correlation between SST file size and WAF
 3. Present the experimental results
