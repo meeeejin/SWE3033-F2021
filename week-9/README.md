@@ -37,7 +37,7 @@ Follow the guide below. If you have any questions, don't hesitate to contact me 
 
 > When using the leveled compaction, if the level does not increase, you need to increase the benchmark execution time or adjust the memtable size or the multiplier value according to the free capacity of your system.
 
-### 2. Record and analysis the RocksDB stats
+### 2. Record and analyze the RocksDB stats
 
 In the RocksDB log file, you can get the below stat:
 
@@ -59,7 +59,9 @@ Observe how WAF (`W-Amp`) differs from level to level. Also, compare these resul
 
 ### 3. Change the SST file size and repeat steps 1-2
 
-Compare **at least three** different SST file sizes. Resize the SST file considering your system's capacity.
+- Resize the SST file considering your system's capacity
+- Compare **at least three** different SST file sizes
+    - Configure three different values for `-target_file_size_base`
 
 ## Report Submission
 
