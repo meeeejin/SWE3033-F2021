@@ -81,7 +81,7 @@ Observe how WAF (`W-Amp`) differs from level to level. Also, compare these resul
     - Change the SST file/memtable size to **2MB (2097152), 8MB (8388608), 16MB (16777216)**
 2. Observe how WAF changes
     - Observe the correlation between SST file size and WAF
-    - e.g., same level size, but the different file size and number of files ➔ In terms of compaction, the impact of the increased number of SST files ➔ As a result, the effect on the WAF
+    - e.g., same level size, but the different file size and the number of files ➔ In terms of compaction, the impact of the increased number of SST files ➔ As a result, the effect on the WAF
 3. Present the experimental results
 4. Analyze the results
 
