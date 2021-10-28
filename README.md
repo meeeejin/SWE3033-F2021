@@ -7,10 +7,10 @@
 
 ## Introduction
 
-Almost every important computer application must manage, update, and query databases using a database system(s) that best fit its workload. In this course, you will learn the three most popular database systems and their major workloads:
+Almost every important computer application must manage, update, and query databases using a database system(s) that best fits its workload. In this course, you will learn the three most popular database systems and their major workloads:
 
 - MySQL and TPC-C (*OLTP workload*)
-- RocksDB and YCSB (*Cloud service workload*)
+- RocksDB and YCSB (*Key-value store workload*)
 - SQLite and AndroBench (*Mobile workload*)
 
 From these three projects, you can learn how each database system works and understand the characteristics of popular workloads. You can also learn how to measure key (performance-related) metrics and analyze their impacts on performance.
@@ -37,4 +37,4 @@ From these three projects, you can learn how each database system works and unde
 
 ## Contact
 
-For general questions and comments about this course, please contact the teaching assistant: Mijin An (meeeejin@skku.edu or meeeeejin@gmail.com)
+If you have any questions about this course, please contact the teaching assistant: Mijin An (meeeejin@skku.edu) and Jong-Hyeok Park (akindo19@skku.edu).
