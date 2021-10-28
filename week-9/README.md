@@ -73,7 +73,7 @@ Observe how WAF (`W-Amp`) differs from level to level. Also, compare these resul
 - Resize the SST file considering your system's capacity
 - Compare **three** different SST file sizes (2MB, 8MB, 16MB)
     - Configure three different values for `-target_file_size_base` and `-write_buffer_size`
-    - To maintain the default setting of RocksDB, set the memtable size equal to the sst file size each time
+    - To follow the default setting of RocksDB, set the memtable size equal to the sst file size each time
 
 ## Report Submission
 
