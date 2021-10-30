@@ -28,7 +28,7 @@ From these three projects, you can learn how each database system works and unde
 | 7      | [RocksDB Compaction](week-7) | Mijin An |
 | 8      | **Mid-term exam** |  |
 | 9      | [SST file size of RocksDB](week-9) | Mijin An |
-| 10     | Introduction to SQLite and AndroBench | Jong-Hyeok Park |
+| 10     | [Introduction to SQLite and AndroBench](week-10) | Jong-Hyeok Park |
 | 11     | TBD | Jong-Hyeok Park |
 | 12     | TBD | Jong-Hyeok Park |
 | 13     | TBD | Jong-Hyeok Park |
