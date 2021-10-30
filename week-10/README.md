@@ -120,7 +120,7 @@ PRAGMA synchronous=0;
   - Change `locking_mode`
   - Chagne `synchronous` mode
 
-3. Present the experimental results (talble or graph format)
+3. Present the experimental results (table or graph format)
 
 4. Analyze the results
   - Explain each configuration factor.
