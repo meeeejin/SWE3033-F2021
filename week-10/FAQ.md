@@ -12,6 +12,10 @@ You can download `androbench.sql` file (single SQL file) in our Github.
 
 https://github.com/meeeejin/SWE3033-F2021/blob/main/week-10/androbench.sql
 
+## What is default jounral mode ?
+
+The default journal mode is `del` (i.e., delete RBJ mode).
+
 
 ## SQLite build error
 
