@@ -28,7 +28,7 @@ namespace sqliteBench {
 
   // #3. Write a code for insert function (direct SQL execution mode)
   // [Requriement]
-  // (1) This function fill sequential key-value data using direct qurey execution sqlite API function
+  // (1) This function fill random key-value data using direct qurey execution sqlite API function
   //     (please refer to lecture slide week 11)
   // (2) This function has single arguemnt num_ which is total number of operations
   // (3) This function create SQL statement (key-value pair) do not modfiy this code 
