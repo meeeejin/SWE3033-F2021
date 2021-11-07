@@ -265,7 +265,7 @@ void Benchmark::setWalJournalMode() {
 
   - Write a code for insert function (direct SQL execution mode)
   - [Requriement]
-    - This function fills sequential key-value data using direct qurey execution sqlite API function
+    - This function fills random key-value data using direct qurey execution sqlite API function
       (please refer to lecture slide week 11)
     - This function has single arguemnt num_ which is total number of operations
     - This function creates SQL statement (key-value pair) do not modfiy this code 
@@ -295,7 +295,7 @@ void Benchmark::setWalJournalMode() {
 
 ### Report Submission
 
-1. Follow the guideline (Insturuction #3) and write  source code (`SWE3033-F2021/week-11/sqlite3Bench/src/homework.cc`) 
+1. Follow the guideline (Insturuction #5) and write  source code (`SWE3033-F2021/week-11/sqlite3Bench/src/homework.cc`) 
 2. Write a simple comment (if any, less then 5 sentences) for your implementation in the source code  and attach a screenshot of running the command below.
 
 - command
