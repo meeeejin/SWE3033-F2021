@@ -235,7 +235,7 @@ void Benchmark::setWalJournalMode() {
 - Write a code for setting the journal mode in the SQLite database engine
 - [Requirement]
   - This function set jounral mode using "FLAGS_journal_mode" extern variable (user input)
-  - This function check journal mode; if user try to set wrong journal mode then return -2
+  - This function checks journal mode; if user try to set wrong journal mode then return -2
   - This function returns status (int data type) of sqlite API function
  
     ```c++
@@ -249,8 +249,8 @@ void Benchmark::setWalJournalMode() {
 
 - Write a code for setting page size in the SQLite database engine
 - [Requirement]
-  - This function set page size using "FLAGS_page_size" extern variable (user input)
-  - This function return status (int data type) of sqltie API function
+  - This function sets page size using "FLAGS_page_size" extern variable (user input)
+  - This function returns status (int data type) of sqltie API function
   - This function is called at benchmark_open() in bench.cc
 
      ```c++
@@ -265,11 +265,11 @@ void Benchmark::setWalJournalMode() {
 
   - Write a code for insert function (direct SQL execution mode)
   - [Requriement]
-    - This function fill sequential key-value data using direct qurey execution sqlite API function
+    - This function fills sequential key-value data using direct qurey execution sqlite API function
       (please refer to lecture slide week 11)
     - This function has single arguemnt num_ which is total number of operations
-    - This function create SQL statement (key-value pair) do not modfiy this code 
-    - This function execute given SQL statement
+    - This function creates SQL statement (key-value pair) do not modfiy this code 
+    - This function executes given SQL statement
     - This function is called at benchmark_open() in bench.cc
 
      ```c++
