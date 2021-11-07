@@ -25,7 +25,7 @@ sudo apt-get install cmake
 
 ```
 git clone https://github.com/meeeejin/SWE3033-F2021.git
-cd week-11
+cd SWE3033-F2021/week-11
 
 // if you already cloned the reposity then 
 cd SWE3033-F2021
