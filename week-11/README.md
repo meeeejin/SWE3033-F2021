@@ -20,6 +20,15 @@ sudo apt-get install git
 ```
 sudo apt-get install cmake 
 ```
+- sqlite library
+  1. go to the directory you have insatlled SQLite database in week 10.
+  2. type `sudo make install -j` command (install library)
+
+```
+cd {PATH}/sqlite-src-3360000/build
+make -j
+sudo make install -j
+```
 
 ### 0. Download SQLiteBench soruce code
 
