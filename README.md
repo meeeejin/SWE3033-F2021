@@ -30,9 +30,9 @@ From these three projects, you can learn how each database system works and unde
 | 9      | [SST file size of RocksDB](week-9) | Mijin An |
 | 10     | [Introduction to SQLite and AndroBench](week-10) | Jong-Hyeok Park |
 | 11     | [SQLite API and Storage organization](week-11) | Jong-Hyeok Park |
-| 12     | TBD | Jong-Hyeok Park |
-| 13     | TBD | Jong-Hyeok Park |
-| 14     | TBD | Jong-Hyeok Park |
+| 12     | Transaction Management in SQlite | Jong-Hyeok Park |
+| 13     | Buffer Management in SQLite | Jong-Hyeok Park |
+| 14     | Logging & Recovery in SQLite | Jong-Hyeok Park |
 | 15     | **Final exam** |  |
 
 ## Contact
