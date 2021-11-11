@@ -42,7 +42,7 @@ namespace sqliteBench {
 
     snprintf(key, sizeof(key), "%016d", k);
     char fill_stmt[100];
-    snprintf(fill_stmt, sizeof(fill_stmt), "INSERT INTO test values (%s , %s)", key ,value);
+    snprintf(fill_stmt, sizeof(fill_stmt), "INSERT INTO test values (%s , x'%x')", key ,value);
     ////////////////////////////////
 
     // execute SQL statement
