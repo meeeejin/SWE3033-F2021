@@ -2,11 +2,11 @@
 
 ## Overview
 
-This week you will learn about the transaction management in SQLite database engine.
-Specifically, the following excercises are carried out 
-- A. Performacne evaluation: system transaction vs. user transaction
+This week you will learn about transaction management in the SQLite database engine.
+Specifically, the following exercises are carried out 
+- A. Performance evaluation: system transaction vs. user transaction
 - B. Understanding deadlock in SQLite
-- C. Performacne evaluation: jounral mode
+- C. Performance evaluation: journal mode
 
 Follow the guide below. If you have any questions, Please feel free to contact me via email (Jonghyeok Park / akindo19@skku.edu)
 
@@ -15,7 +15,7 @@ Follow the guide below. If you have any questions, Please feel free to contact m
 ## Prerequisite
  
 ### [mandatory] Install SQLite Library
-- Skip this process if you already installed SQLite library
+- Skip this process if you have already installed SQLite library
 
 ```bash
 # go to the SQLite build directory 
@@ -24,13 +24,13 @@ cd {PATH}/sqlite-src-3360000/build
 make -j
 sudo make install -j 
 
-# you can use SQLite database in any directroy
+# you can use SQLite database in any directory
 cd ~
 sqltie --version
 
 ```
 
-## A. Performacne evaluation: system transaction vs. user transaction
+## A. Performance evaluation: system transaction vs. user transaction
 
 ### 1. Download the database and test query files
 
@@ -42,7 +42,7 @@ sqltie --version
 git clone https://github.com/meeeejin/SWE3033-F2021.git
 cd week-12
 
-# If you already cloned the reposity then 
+# If you already cloned the repository then 
 cd SWE3033-F2021
 git pull
 
@@ -61,7 +61,7 @@ real    0m10.947s
 user    0m0.546s
 sys     0m0.362s
 
-# 3. Present the exeprimental results using `real` time 
+# 3. Present the experimental results using `real` time 
 
 ```
 
@@ -93,7 +93,7 @@ sqlite> .exit
 
 - Open two terminals (terminal A and B) and open the same database (`deadlock.db`) concurrently.
 - Type the SQL command in following orders: 
-> Note. "[termnia A]" means execute the SQL statement in the terminal A
+> Note. "[termnia A]" means execute the SQL statement in terminal A
 
 ```bash
 step1. [terminal A] BEGIN; 
@@ -108,12 +108,12 @@ step8. See what happened in terminal B
 
 ### 3. Resolve the deadlock case 
 
-- Write your own answer to resolve this deadlock issue and show the execution reuslts 
+- Write your own answer to resolve this deadlock issue and show the execution results 
 
 > Hint. Use ROLLBACK command
 
 
-## C. Performance evaluation: jounral mode
+## C. Performance evaluation: journal mode
 
 ### 1. Evaluate the performance using `time` command
 
@@ -128,7 +128,7 @@ real    0m10.947s
 user    0m0.546s
 sys     0m0.362s
 
-# 3. Present the exeprimental results using `real` time 
+# 3. Present the experimental results using `real` time 
 ```
 
 ### 2. Repeat Step 1 for following files in `test_query` directory
@@ -147,18 +147,18 @@ sys     0m0.362s
 
 ## Report Submission
 
-1. Do excercise A, B, and C following the instructions
+1. Do exercise A, B, and C following the instructions
 
-2. Present experiment results (e.g., table or graph format) and write your own answer for following questions
+2. Present experiment results (e.g., table or graph format) and write your own answer for the following questions
 
-  - For excercise A: The major reason of performance gap between `user transaction` and `system transaction`
-  - For excercise B: Explain your solution to resovle the deadlock issuea and attach the screenshot of run results 
-  - For excercise C: (1) Compare the performance between journal mode and number of SQL statements in each transactions
-  (2) Analyze the performance using characteristics of each journal mode (Please refer to [SQLite jounal mode](https://www.sqlite.org/pragma.html#pragma_journal_mode)).
+  - For exercise A: The major reason of the performance gap between `user transaction` and `system transaction`
+  - For exercise B: Explain your solution to resovle the deadlock issuea and attach the screenshot of run results 
+  - For exercise C: (1) Compare the performance between journal mode and the number of SQL statements in each transaction
+  (2) Analyze the performance using characteristics of each journal mode (Please refer to [SQLite journal mode](https://www.sqlite.org/pragma.html#pragma_journal_mode)).
 
 Organize the results and your answer into a single report and submit it. 
 Follow the [submission guide](../report-submission-guide.md) for your report.
 
 
 ### References
-- [SQLite jounal mode](https://www.sqlite.org/pragma.html#pragma_journal_mode)
+- [SQLite journal mode](https://www.sqlite.org/pragma.html#pragma_journal_mode)
