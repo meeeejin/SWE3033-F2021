@@ -100,10 +100,10 @@ step1. [terminal A] BEGIN;
 step2. [terminal B] BEGIN; 
 step3. [terminal B] INSERT INTO TEST VALUES (3);
 step4. [terminal A] SELECT * FROM TEST;
-step5. [terminal A] SINSERT INTO TEST VALUES (4);
+step5. [terminal A] INSERT INTO TEST VALUES (4);
 step6. See what happened in terminal A
 step7. [terminal B] COMMIT;
-step8. See what happened in terminal A 
+step8. See what happened in terminal B
 ```
 
 ### 3. Resolve the deadlock case 
