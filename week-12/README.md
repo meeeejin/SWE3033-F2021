@@ -145,7 +145,7 @@ sys     0m0.362s
 
 > syncN_[journal_mode].sql : N means the number of SQL statements in transaction
 
-### Report Submission
+## Report Submission
 
 1. Do excercise A, B, and C following the instructions
 
