@@ -145,8 +145,8 @@ python tpcc.py --warehouse=10 --config=./sqlite.config --no-load --duration=1800
 ### 3. Change page cache size and repeat step 2
 
 - Resize the `cache_size` of the SQLite database engine 
-- Compare **three** different page_cache sizes (50, 100, 150, 200)
-  - Configure three different values for `--buffer` 
+- Compare **four** different page_cache sizes (50, 100, 150, 200)
+  - Configure four different values for `--buffer` 
 
 ## Report Submission
 
